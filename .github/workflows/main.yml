@@ -8,24 +8,31 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout tools repo
+    - name: Checkout public repo
       uses: actions/checkout@v2
       with:
         repository: saasbook/hw-ruby-intro
         path: source/hw-ruby-intro
-
-    - name: Checkout tools repo
+        
+    - name: Checkout private repo
+      uses: actions/checkout@v2
+      with:
+        repository: saasbook/hw-ruby-intro-ci
+        path: source/hw-ruby-intro-ci
+        token: ${{ secrets.GITHUB_TOKEN }}
+          
+    - name: Checkout converter repo
       uses: actions/checkout@v2
       with:
         repository: codio/book-converter
         path: book-converter
         ref: assesment_doc_converter
 
-    - name: install pyYaml
+    - name: install requirements
       run: |
         python3 -m pip install --upgrade setuptools
         pip3 install wheel
-        pip3 install PyYAML
+        pip3 install -r requirements.txt
 
     - name: convert
       run: |
