@@ -18,14 +18,14 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: codio-content/hw-ruby-intro-ci
-        path: source/hw-ruby-intro-ci
+        path: ./hw-ruby-intro-ci
         token: ${{ secrets.GITHUB_TOKEN }}
           
     - name: Checkout converter repo
       uses: actions/checkout@v2
       with:
         repository: codio/book-converter
-        path: book-converter
+        path: converter
         ref: assesment_doc_converter
 
     - name: install requirements
@@ -36,20 +36,17 @@ jobs:
 
     - name: convert
       run: |
-        cd book-converter
-        python3 chips.py --generate ../source/hw-ruby-intro ../converted-chips -y
-        python3 chips.py ../converted-chips -y
-    
-    - name: ls dir
-      run: ls -la
+        cd converter
+        python3 chips.py --generate ../source/hw-ruby-intro ../result -y
+        python3 chips.py ../result -y
       
     - name: Get Current Branch
       id: get-branch
       uses: codio/get-branch-name-github-action@v1
 
     - name: Archive
-      run: zip -r ../converted-chips ./
-      working-directory: converted-chips
+      run: zip -r ../result ./
+      working-directory: result
       if: ${{ steps.get-branch.outputs.branch == 'master' }}
     
     - name: ls dir
@@ -82,7 +79,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./converted-chips.zip
-        asset_name: converted-chips.zip
+        asset_path: ./result.zip
+        asset_name: result.zip
         asset_content_type: application/zip
       if: ${{ steps.get-branch.outputs.branch == 'master' }}
