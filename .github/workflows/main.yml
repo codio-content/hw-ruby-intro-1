@@ -17,7 +17,7 @@ jobs:
     - name: Checkout private repo
       uses: actions/checkout@v2
       with:
-        repository: saasbook/hw-ruby-intro-ci
+        repository: codio-content/hw-ruby-intro-ci
         path: source/hw-ruby-intro-ci
         token: ${{ secrets.GITHUB_TOKEN }}
           
