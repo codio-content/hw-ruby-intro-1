@@ -24,6 +24,8 @@ jobs:
     - name: install pyYaml
       run: |
         python3 -V
+        pip3 -V
+        python3 -m pip install --upgrade setuptools
         pip3 install PyYAML
 
     - name: convert
