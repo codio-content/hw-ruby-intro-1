@@ -23,17 +23,19 @@ jobs:
 
     - name: install pyYaml
       run: |
-        python3 -V
-        pip3 -V
         python3 -m pip install --upgrade setuptools
+        pip3 install wheel
         pip3 install PyYAML
 
     - name: convert
       run: |
         cd book-converter
-        python3 chips.py --generate ../source/hw-ruby-intro converted-chips -y
-        python3 chips.py converted-chips -y
+        python3 chips.py --generate ../source/hw-ruby-intro ../converted-chips -y
+        python3 chips.py ../converted-chips -y
     
+    - name: ls dir
+      run: ls -la
+      
     - name: Get Current Branch
       id: get-branch
       uses: codio/get-branch-name-github-action@v1
