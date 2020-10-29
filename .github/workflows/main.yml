@@ -15,12 +15,8 @@ jobs:
         path: source/hw-ruby-intro
         
     - name: Checkout private repo
-      uses: actions/checkout@v2
-      with:
-        repository: codio-content/hw-ruby-intro-ci
-        path: ./hw-ruby-intro-ci
-        token: ${{ secrets.GITHUB_TOKEN }}
-          
+      run: git clone "https://${{ secrets.ACCESS_TOKEN }}@github.com/codio-content/hw-ruby-intro-ci.git" --branch master
+      
     - name: Checkout converter repo
       uses: actions/checkout@v2
       with:
@@ -31,12 +27,13 @@ jobs:
     - name: install requirements
       run: |
         python3 -m pip install --upgrade setuptools
+        python3 -m pip install --upgrade pip
         pip3 install wheel
         pip3 install -r requirements.txt
 
     - name: convert
+      working-directory: converter
       run: |
-        cd converter
         python3 chips.py --generate ../source/hw-ruby-intro ../result -y
         python3 chips.py ../result -y
       
