@@ -16,10 +16,12 @@ jobs:
         
     - name: Checkout private repo
       uses: actions/checkout@v2
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         repository: codio-content/hw-ruby-intro-ci
         path: hw-ruby-intro-ci
-        token: ${{ secrets.CI_SECRET_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Checkout converter repo
       uses: actions/checkout@v2
