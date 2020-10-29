@@ -15,7 +15,7 @@ jobs:
         path: source/hw-ruby-intro
         
     - name: Checkout private repo
-      run: git clone "https://${{ secrets.ACCESS_TOKEN }}@github.com/codio-content/hw-ruby-intro-ci.git" --branch master
+      run: git clone "https://${{ secrets.GITHUB_TOKEN }}@github.com/codio-content/hw-ruby-intro-ci.git" --branch master
       
     - name: Checkout converter repo
       uses: actions/checkout@v2
