@@ -15,10 +15,10 @@ jobs:
         path: source/hw-ruby-intro
         
     - name: Checkout private repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v1
       with:
         repository: mint87/hw-ruby-intro-ci
-        token: ${{ secrets.ACCESS_KEY }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         path: hw-ruby-intro-ci
     
     - name: Checkout converter repo
