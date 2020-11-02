@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: codio-content/hw-ruby-intro-ci
-        token: ${{ secrets.SECRET_TOKEN }}
+        token: ${{ secrets.ACCESS_TOKEN }}
         path: hw-ruby-intro-ci
     
     - name: Checkout converter repo
@@ -34,6 +34,7 @@ jobs:
         python3 -m pip install --upgrade pip
         pip3 install wheel
         pip3 install -r requirements.txt
+      working-directory: converter
 
     - name: convert
       working-directory: converter
