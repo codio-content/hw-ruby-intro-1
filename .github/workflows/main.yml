@@ -17,7 +17,7 @@ jobs:
     - name: Checkout private repo
       uses: actions/checkout@v2
       with:
-        repository: codio-content/hw-ruby-intro-ci
+        repository: mint87/hw-ruby-intro-ci
         token: ${{ secrets.ACCESS_TOKEN }}
         path: hw-ruby-intro-ci
     
