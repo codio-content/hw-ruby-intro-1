@@ -14,12 +14,8 @@ jobs:
         repository: saasbook/hw-ruby-intro
         path: source/hw-ruby-intro
         
-    - name: Checkout private repo
-      uses: actions/checkout@v2
-      with:
-        repository: codio-content/hw-ruby-intro-ci
-        token: ${{ secrets.GITHUB_TOKEN }}
-        path: hw-ruby-intro-ci
+    - name: clone private repo
+      run: git clone "https://${{ secrets.ACCESS_TOKEN }}@github.com/codio-content/hw-ruby-intro-ci.git" ./output
     
     - name: Checkout converter repo
       uses: actions/checkout@v2
