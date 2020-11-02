@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         repository: mint87/hw-ruby-intro-ci
-        token: ${{ secrets.ACCESS_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         path: hw-ruby-intro-ci
     
     - name: Checkout converter repo
