@@ -58,7 +58,7 @@ jobs:
       uses: mathieudutour/github-tag-action@v4.5
       id: tagger
       with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+        github_token: ${{ secrets.ACCESS_TOKEN }}
       if: ${{ steps.get-branch.outputs.branch == 'master' }}
 
     - name: Create Release
