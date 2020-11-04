@@ -48,6 +48,9 @@ jobs:
       run: | 
         cp hw-ruby-intro-ci/codio/gradescope.py result/.guides/secure
       
+    - name: ls result dir
+      run: cs result && ls -la 
+      
     - name: Get Current Branch
       id: get-branch
       uses: codio/get-branch-name-github-action@v1
