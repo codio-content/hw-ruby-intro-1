@@ -38,7 +38,7 @@ jobs:
 
     - name: Copy structure
       run: | 
-        cp hw-ruby-intro-ci/codio/codio_structure.yml result
+        cp hw-ruby-intro-ci/codio/codio_structure.yml result/
 
     - name: Convert
       working-directory: converter
