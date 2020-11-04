@@ -21,11 +21,11 @@ jobs:
         token: ${{ secrets.ACCESS_TOKEN }}
         path: hw-ruby-intro-ci
     
-    - name: Checkout converter repo
+    - name: Checkout book-converter repo
       uses: actions/checkout@v2
       with:
         repository: codio/book-converter
-        path: converter
+        path: book-converter
         ref: assesment_doc_converter
 
     - name: Install requirements
@@ -34,7 +34,7 @@ jobs:
         python3 -m pip install --upgrade pip
         pip3 install wheel
         pip3 install -r requirements.txt
-      working-directory: converter
+      working-directory: book-converter
 
     - name: Copy structure
       run: | 
@@ -42,14 +42,8 @@ jobs:
         cp hw-ruby-intro-ci/codio/codio_structure.yml converted
 
     - name: Convert
-      working-directory: converter
+      working-directory: book-converter
       run: python3 chips.py ../converted -y
-      
-    - name: ls dir
-      run: |
-        ls -la
-        cd converted && ls -la
-        cd generate/.guides && ls -la
       
     - name: Copy gradescope script
       run: |
@@ -66,9 +60,7 @@ jobs:
       if: ${{ steps.get-branch.outputs.branch == 'master' }}
     
     - name: ls dir
-      run: |
-        ls -la
-        cd result && ls -la
+      run: ls -la
 
     - name: Bump version and push tag
       uses: mathieudutour/github-tag-action@v4.5
