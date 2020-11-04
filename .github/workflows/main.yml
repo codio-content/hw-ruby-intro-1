@@ -44,6 +44,11 @@ jobs:
       working-directory: converter
       run: python3 chips.py ../result -y
       
+    - name: ls dir
+      run: |
+        cd result && ls -la
+        cd result/.guides && ls -la  
+      
     - name: Copy gradescope script
       run: |
         mkdir result/.guides/secure
