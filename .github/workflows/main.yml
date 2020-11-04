@@ -45,9 +45,7 @@ jobs:
       run: python3 chips.py ../result -y
       
     - name: ls dir
-      run: |
-        cd result && ls -la
-        cd result/.guides && ls -la  
+      run: ls -la
       
     - name: Copy gradescope script
       run: |
