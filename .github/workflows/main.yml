@@ -36,14 +36,17 @@ jobs:
         pip3 install -r requirements.txt
       working-directory: converter
 
-    - name: Copy structure and gradescope files
+    - name: Copy structure
       run: | 
         cp hw-ruby-intro-ci/codio/codio_structure.yml result
-        cp hw-ruby-intro-ci/codio/gradescope.py result/.guides/secure
 
     - name: Convert
       working-directory: converter
       run: python3 chips.py ../result -y
+      
+    - name: Copy gradescope script
+      run: | 
+        cp hw-ruby-intro-ci/codio/gradescope.py result/.guides/secure
       
     - name: Get Current Branch
       id: get-branch
