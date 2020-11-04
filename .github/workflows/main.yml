@@ -49,13 +49,12 @@ jobs:
       run: |
         ls -la
         cd converted && ls -la
-        cd generate && ls -la
+        cd generate/.guides && ls -la
       
     - name: Copy gradescope script
       run: |
-        mkdir converted/.guides/secure
-        cp -R hw-ruby-intro-ci converted/.guides/secure
-        cp hw-ruby-intro-ci/codio/gradescope.py converted/.guides/secure
+        cp -R hw-ruby-intro-ci converted/generate/.guides/secure
+        cp hw-ruby-intro-ci/codio/gradescope.py converted/generate/.guides/secure
            
     - name: Get Current Branch
       id: get-branch
